@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCardStore from "../store/Card";
 
 export default function Cards() {
@@ -9,42 +10,46 @@ export default function Cards() {
     <div className="py-24 sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl ">
-          <h2 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+          <h2 className="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             All Cards Page
           </h2>
-          <p className="mt-4 text-xl">
+          <p className="mt-4 text-black dark:text-white text-xl">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident.
           </p>
         </div>
         <div className="grid max-w-2xl grid-cols-1 mx-auto mt-16 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {cards.map((card) => (
+
             <article
               key={card.id}
-              className="flex flex-col items-start justify-between overflow-hidden bg-white rounded-md shadow-lg dark:bg-black"
+              className="flex flex-col relative items-start justify-between overflow-hidden bg-white rounded-md shadow-lg dark:bg-black"
+              
             >
+              
               <div className="relative w-full">
                 <img
                   src={card.imageUrl}
                   alt=""
-                  className="aspect-[16/9] w-full   bg-gray-100 object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
+                  className="aspect-[16/9] w-full   bg-gray-100  object-cover sm:aspect-[2/1] lg:aspect-[3/2]"
                 />
                 <div className="absolute inset-0 ring-1 ring-inset ring-gray-900/10" />
               </div>
               <div className="max-w-xl px-4">
+                
                 <div className="relative group">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 dark:text-white text-gray-900 group-hover:text-gray-600">
                     <a href={card.href}>
                       <span className="absolute inset-0" />
                       {card.title}
                     </a>
                   </h3>
-                  <p className="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">
+                  <p className="mt-5 text-sm leading-6 dark:text-gray-100 text-gray-600 line-clamp-3">
                     {card.description}
                   </p>
                 </div>
               </div>
 
-              <div className="px-4 my-4">
+              <div className="px-4 dark:text-white text-black my-4">
                 <div className="">
                   <b>Address: </b> {card.address}
                 </div>
@@ -56,7 +61,7 @@ export default function Cards() {
                 </div>
               </div>
 
-              <div className="flex w-full px-4 py-3 border-t border-gray-300">
+              <div className="flex w-full px-4 py-3 dark:text-gray-500 text-black border-t border-gray-300">
                 <div className="flex items-center gap-4 ml-auto">
                   <button>
                     <svg

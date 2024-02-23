@@ -13,44 +13,44 @@ function classNames(...classes) {
 export default function Header() {
   const authenticated = useAuthStore((state) => state.authenticated);
   return (
-    <Disclosure as="nav" className="bg-white shadow">
+    <Disclosure as="nav" className="bg-white dark:bg-black shadow">
       {({ open }) => (
         <>
           <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
             <div className="flex justify-between h-16">
               <div className="flex px-2 lg:px-0">
                 <div className="flex items-center flex-shrink-0">
-                  <Link className="text-2xl font-bold" to="/">
+                  <Link className="text-2xl dark:text-white text-black font-bold" to="/">
                     Card
                   </Link>
                 </div>
                 {authenticated && (
                   <div className="hidden lg:ml-6 lg:flex lg:space-x-8">
-                    {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-900 border-b-2 border-indigo-500"
+                    {/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent dark:text-white text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
+                    <Link
+                      to="/"
+                      className="inline-flex items-center px-1 pt-1 text-sm font-medium dark:text-white text-gray-500 dark:text-white  "
                     >
-                      Dashboard
-                    </a>
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
+                      Home
+                    </Link>
+                    <Link
+                      to="/create-card"
+                      className="inline-flex items-center px-1 pt-1 text-sm font-medium dark:text-white text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
                     >
-                      Team
-                    </a>
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
+                      Create Card
+                    </Link>
+                    <Link
+                      to="/favourite-cards"
+                      className="inline-flex items-center px-1 pt-1 text-sm font-medium dark:text-white text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
                     >
-                      Projects
-                    </a>
-                    <a
-                      href="#"
-                      className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
+                      Fav Cards
+                    </Link>
+                    <Link
+                      to="/about"
+                      className="inline-flex items-center px-1 pt-1 text-sm font-medium dark:text-white text-gray-500 border-b-2 border-transparent hover:border-gray-300 hover:text-gray-700"
                     >
-                      Calendar
-                    </a>
+                      About
+                    </Link>
                   </div>
                 )}
               </div>
@@ -80,7 +80,7 @@ export default function Header() {
                   </div>
                   <div className="flex items-center lg:hidden">
                     {/* Mobile menu button */}
-                    <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
+                    <Disclosure.Button className="relative inline-flex items-center justify-center p-2 text-gray-400 rounded-md hover:bg-gray-100 hover:dark:text-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
                       <span className="absolute -inset-0.5" />
                       <span className="sr-only">Open main menu</span>
                       {open ? (
@@ -99,7 +99,7 @@ export default function Header() {
                   <div className="hidden lg:ml-4 lg:flex lg:items-center">
                     <button
                       type="button"
-                      className="relative flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                      className="relative flex-shrink-0 p-1 text-gray-400 bg-white rounded-full hover:dark:text-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                     >
                       <span className="absolute -inset-1.5" />
                       <span className="sr-only">View notifications</span>
@@ -235,13 +235,13 @@ export default function Header() {
                     <div className="text-base font-medium text-gray-800">
                       Tom Cook
                     </div>
-                    <div className="text-sm font-medium text-gray-500">
+                    <div className="text-sm font-medium dark:text-white text-gray-500">
                       tom@example.com
                     </div>
                   </div>
                   <button
                     type="button"
-                    className="relative flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    className="relative flex-shrink-0 p-1 ml-auto text-gray-400 bg-white rounded-full hover:dark:text-white text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
                   >
                     <span className="absolute -inset-1.5" />
                     <span className="sr-only">View notifications</span>
@@ -252,21 +252,21 @@ export default function Header() {
                   <Disclosure.Button
                     as="a"
                     href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    className="block px-4 py-2 text-base font-medium dark:text-white text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                   >
                     Your Profile
                   </Disclosure.Button>
                   <Disclosure.Button
                     as="a"
                     href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    className="block px-4 py-2 text-base font-medium dark:text-white text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                   >
                     Settings
                   </Disclosure.Button>
                   <Disclosure.Button
                     as="a"
                     href="#"
-                    className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+                    className="block px-4 py-2 text-base font-medium dark:text-white text-gray-500 hover:bg-gray-100 hover:text-gray-800"
                   >
                     Sign out
                   </Disclosure.Button>
