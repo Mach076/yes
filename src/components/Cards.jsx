@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
 import useCardStore from "../store/Card";
 
 export default function Cards() {
   const cards = useCardStore((state) => state.cards);
   const favouriteCards = useCardStore((state) => state.favouriteCards);
   const toggleFavourite = useCardStore((state) => state.toggleFavourite);
+  const deleteCard = useCardStore((state) => state.deleteCard);
   console.log(favouriteCards);
   return (
     <div className="py-24 sm:py-32">
@@ -13,19 +13,16 @@ export default function Cards() {
           <h2 className="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             All Cards Page
           </h2>
-          <p className="mt-4 text-black dark:text-white text-xl">
+          <p className="mt-4 text-xl text-black dark:text-white">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident.
           </p>
         </div>
         <div className="grid max-w-2xl grid-cols-1 mx-auto mt-16 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
           {cards.map((card) => (
-
             <article
               key={card.id}
-              className="flex flex-col relative items-start justify-between overflow-hidden bg-white rounded-md shadow-lg dark:bg-black"
-              
+              className="relative flex flex-col items-start justify-between overflow-hidden bg-white rounded-md shadow-lg dark:bg-black"
             >
-              
               <div className="relative w-full">
                 <img
                   src={card.imageUrl}
@@ -35,21 +32,20 @@ export default function Cards() {
                 <div className="absolute inset-0 ring-1 ring-inset ring-gray-900/10" />
               </div>
               <div className="max-w-xl px-4">
-                
                 <div className="relative group">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 dark:text-white text-gray-900 group-hover:text-gray-600">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-gray-600">
                     <a href={card.href}>
                       <span className="absolute inset-0" />
                       {card.title}
                     </a>
                   </h3>
-                  <p className="mt-5 text-sm leading-6 dark:text-gray-100 text-gray-600 line-clamp-3">
+                  <p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-100 line-clamp-3">
                     {card.description}
                   </p>
                 </div>
               </div>
 
-              <div className="px-4 dark:text-white text-black my-4">
+              <div className="px-4 my-4 text-black dark:text-white">
                 <div className="">
                   <b>Address: </b> {card.address}
                 </div>
@@ -61,7 +57,7 @@ export default function Cards() {
                 </div>
               </div>
 
-              <div className="flex w-full px-4 py-3 dark:text-gray-500 text-black border-t border-gray-300">
+              <div className="flex w-full px-4 py-3 text-black border-t border-gray-300 dark:text-gray-500">
                 <div className="flex items-center gap-4 ml-auto">
                   <button>
                     <svg
@@ -99,6 +95,25 @@ export default function Cards() {
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    onClick={() => deleteCard(card.id)}
+                    className="text-gray-500"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m14.74 9-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 0 1-2.244 2.077H8.084a2.25 2.25 0 0 1-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 0 0-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 0 1 3.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 0 0-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 0 0-7.5 0"
                       />
                     </svg>
                   </button>
