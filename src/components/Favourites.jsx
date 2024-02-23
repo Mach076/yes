@@ -1,26 +1,25 @@
 import useCardStore from "../store/Card";
 
-export default function Cards() {
+export default function Favourites() {
   const cards = useCardStore((state) => state.cards);
   const favouriteCards = useCardStore((state) => state.favouriteCards);
   const toggleFavourite = useCardStore((state) => state.toggleFavourite);
-  console.log(favouriteCards);
   return (
     <div className="py-24 sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl ">
           <h2 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
-            All Cards Page
+            Favourite Cards Page
           </h2>
           <p className="mt-4 text-xl">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident.
           </p>
         </div>
         <div className="grid max-w-2xl grid-cols-1 mx-auto mt-16 gap-x-8 gap-y-20 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-          {cards.map((card) => (
+          {favouriteCards.map((card) => (
             <article
               key={card.id}
-              className="flex flex-col items-start justify-between overflow-hidden bg-white rounded-md shadow-lg dark:bg-black"
+              className="flex flex-col items-start justify-between overflow-hidden bg-white rounded-md shadow-lg"
             >
               <div className="relative w-full">
                 <img
@@ -76,11 +75,7 @@ export default function Cards() {
                   </button>
                   <button
                     onClick={() => toggleFavourite(card)}
-                    className={`${
-                      favouriteCards.find((c) => c.id === card.id)
-                        ? "text-red-500"
-                        : "text-gray-500"
-                    }`}
+                    className="text-red-500"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"

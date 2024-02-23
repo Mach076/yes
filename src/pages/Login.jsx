@@ -1,21 +1,35 @@
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "../store/Auth";
 export default function Login() {
+  const login = useAuthStore((state) => state.login);
+  const navigate = useNavigate();
+  const onSubmit = (e) => {
+    e.preventDefault();
+    login();
+    navigate("/");
+  };
   return (
     <>
       <div className="flex h-[90vh] flex-1 flex-col justify-center py-12 sm:px-6 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
-            className="mx-auto h-10 w-auto"
+            className="w-auto h-10 mx-auto"
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
             alt="Your Company"
           />
-          <h2 className="mt-6 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+          <h2 className="mt-6 text-2xl font-bold leading-9 tracking-tight text-center text-gray-900">
             Sign in to your account
           </h2>
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-[480px]">
-          <div className="bg-white px-6 py-12 shadow sm:rounded-lg sm:px-12">
-            <form className="space-y-6" action="#" method="POST">
+          <div className="px-6 py-12 bg-white shadow sm:rounded-lg sm:px-12">
+            <form
+              onSubmit={onSubmit}
+              className="space-y-6"
+              action="#"
+              method="POST"
+            >
               <div>
                 <label
                   htmlFor="email"
@@ -60,11 +74,11 @@ export default function Login() {
                     id="remember-me"
                     name="remember-me"
                     type="checkbox"
-                    className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
+                    className="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-600"
                   />
                   <label
                     htmlFor="remember-me"
-                    className="ml-3 block text-sm leading-6 text-gray-900"
+                    className="block ml-3 text-sm leading-6 text-gray-900"
                   >
                     Remember me
                   </label>

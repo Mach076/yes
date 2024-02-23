@@ -1,14 +1,14 @@
 import React, { Fragment } from "react";
-import Cards from "../components/Cards";
+import Favourites from "../components/Favourites";
 
-const Home = () => {
+const FavouriteCards = () => {
   return (
     <Fragment>
       <div className="min-h-[90vh] ">
-        <Cards />
+        <Favourites />
       </div>
     </Fragment>
   );
 };
 
-export default Home;
+export default FavouriteCards;

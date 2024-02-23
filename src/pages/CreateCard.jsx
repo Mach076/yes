@@ -1,45 +1,81 @@
-import React from "react";
-
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useCardStore from "../store/Card";
 const CreateCard = () => {
-  const sendForm = (e) => {};
+  const addCard = useCardStore((state) => state.addCard);
+  const [title, setTitle] = useState("");
+  const [address, setAddress] = useState("");
+  const [phone, setPhone] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [description, setDescription] = useState("");
+  const navigate = useNavigate();
+  const length = useCardStore((state) => state.cards.length);
+  const createCard = (e) => {
+    e.preventDefault();
+    // validate
+    if (!title || !address || !phone || !cardNumber || !description) {
+      return;
+    }
+    const card = {
+      id: length + 1,
+      title,
+      address,
+      phone,
+      cardNumber,
+      description,
+      imageUrl:
+        "https://images.unsplash.com/photo-1496128858413-b36217c2ce36?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3603&q=80",
+      date: "Mar 16, 2020",
+      datetime: "2020-03-16",
+      category: { title: "Marketing", href: "#" },
+    };
+    addCard(card);
+    navigate("/");
+  };
   return (
     <div className="max-w-7xl h-[90vh] mx-auto py-24">
       <div className="py-8">
         <h1 className="text-3xl font-medium">Create Card</h1>
       </div>
-      <form onSubmit={sendForm} className="grid w-full grid-cols-2 gap-8">
+      <form onSubmit={createCard} className="grid w-full grid-cols-2 gap-8">
         <div className="">
-          <label className="text-md block" tmlFor="name">
+          <label className="block text-md" tmlFor="name">
             Title
           </label>
           <input
             type="text"
-            className="px-3 mt-2 w-full py-2 rounded-md"
+            className="w-full px-3 py-2 mt-2 rounded-md"
             placeholder="Name"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
             name="name"
             id="name"
           />
         </div>
 
         <div className="">
-          <label className="text-md block" tmlFor="name">
+          <label className="block text-md" tmlFor="name">
             Address
           </label>
           <input
             type="text"
-            className="px-3 mt-2 w-full py-2 rounded-md"
+            className="w-full px-3 py-2 mt-2 rounded-md"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
             placeholder="Alia Town"
             name="name"
             id="name"
           />
         </div>
         <div className="">
-          <label className="text-md block" tmlFor="name">
+          <label className="block text-md" htmlFor="name">
             Phone
           </label>
           <input
             type="tel"
-            className="px-3 mt-2 w-full py-2 rounded-md"
+            className="w-full px-3 py-2 mt-2 rounded-md"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             placeholder="+92...."
             name="name"
             id="name"
@@ -47,12 +83,14 @@ const CreateCard = () => {
         </div>
 
         <div className="">
-          <label className="text-md block" tmlFor="name">
+          <label className="block text-md" tmlFor="name">
             Card Number
           </label>
           <input
             type="number"
-            className="px-3 mt-2 w-full py-2 rounded-md"
+            className="w-full px-3 py-2 mt-2 rounded-md"
+            value={cardNumber}
+            onChange={(e) => setCardNumber(e.target.value)}
             placeholder="1234"
             name="name"
             id="name"
@@ -60,10 +98,12 @@ const CreateCard = () => {
         </div>
 
         <div className="col-span-2">
-          <label className="text-md block" tmlFor="name">
+          <label className="block text-md" tmlFor="name">
             Description
           </label>
           <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
             type="number"
             className="px-3 mt-2 min-h-[250px] w-full py-2 rounded-md"
             placeholder="This is cool"
@@ -74,7 +114,7 @@ const CreateCard = () => {
 
         <button
           type="submit"
-          className="w-36 rounded-md text-white h-10 bg-indigo-700"
+          className="h-10 text-white bg-indigo-700 rounded-md w-36"
         >
           Save
         </button>
