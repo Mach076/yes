@@ -8,10 +8,10 @@ export default function Favourites() {
     <div className="py-24 sm:py-32">
       <div className="px-6 mx-auto max-w-7xl lg:px-8">
         <div className="max-w-2xl ">
-          <h2 className="text-5xl font-semibold tracking-tight text-gray-900 sm:text-5xl">
+          <h2 className="text-5xl font-semibold tracking-tight text-gray-900 dark:text-white sm:text-5xl">
             Favourite Cards Page
           </h2>
-          <p className="mt-4 text-xl">
+          <p className="mt-4 text-black  dark:text-white text-xl">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Provident.
           </p>
         </div>
@@ -19,7 +19,7 @@ export default function Favourites() {
           {favouriteCards.map((card) => (
             <article
               key={card.id}
-              className="flex flex-col items-start justify-between overflow-hidden bg-white rounded-md shadow-lg"
+              className="flex flex-col items-start justify-between overflow-hidden bg-white dark:bg-black rounded-md shadow-lg"
             >
               <div className="relative w-full">
                 <img
@@ -31,19 +31,19 @@ export default function Favourites() {
               </div>
               <div className="max-w-xl px-4">
                 <div className="relative group">
-                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+                  <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-gray-600">
                     <a href={card.href}>
                       <span className="absolute inset-0" />
                       {card.title}
                     </a>
                   </h3>
-                  <p className="mt-5 text-sm leading-6 text-gray-600 line-clamp-3">
+                  <p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-100 line-clamp-3">
                     {card.description}
                   </p>
                 </div>
               </div>
 
-              <div className="px-4 my-4">
+              <div className="px-4 my-4 text-black dark:text-white">
                 <div className="">
                   <b>Address: </b> {card.address}
                 </div>
@@ -55,7 +55,7 @@ export default function Favourites() {
                 </div>
               </div>
 
-              <div className="flex w-full px-4 py-3 border-t border-gray-300">
+              <div className="flex w-full dark:text-gray-500 px-4 py-3 border-t border-gray-300">
                 <div className="flex items-center gap-4 ml-auto">
                   <button>
                     <svg
