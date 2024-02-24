@@ -25,7 +25,8 @@ const useCardStore = create((set) => ({
       cards: state.cards.map((c) => (c.id === id ? card : c)),
     })),
   getCard: (id) => set((state) => state.cards.find((c) => c.id === id)),
-
+  deleteCard: (id) =>
+    set((state) => ({ cards: state.cards.filter((c) => c.id !== id) })),
   toggleFavourite: (id) =>
     set((state) => {
       if (state.favouriteCards.includes(id)) {
