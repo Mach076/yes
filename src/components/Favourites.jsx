@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCardStore from "../store/Card";
 
 export default function Favourites() {
@@ -43,10 +44,10 @@ export default function Favourites() {
               <div className="max-w-xl px-4">
                 <div className="relative group">
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-gray-600">
-                    <a href={card.href}>
+                  <Link to={`/edit-card/${card.id}`}>
                       <span className="absolute inset-0" />
                       {card.title}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-100 line-clamp-3">
                     {card.description}

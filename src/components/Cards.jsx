@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import useCardStore from "../store/Card";
 
 export default function Cards() {
@@ -5,6 +6,16 @@ export default function Cards() {
   const favouriteCards = useCardStore((state) => state.favouriteCards);
   const toggleFavourite = useCardStore((state) => state.toggleFavourite);
   const deleteCard = useCardStore((state) => state.deleteCard);
+  const deleteCardFunc = (id) => {
+    // deleteCard(1);
+    // delete from favourite
+    deleteCard(id);
+    favouriteCards.map((card) => {
+      if (card.id === id) {
+        toggleFavourite(card);
+      }
+    });
+  };
   console.log(favouriteCards);
   return (
     <div className="py-24 sm:py-32">
@@ -34,10 +45,10 @@ export default function Cards() {
               <div className="max-w-xl px-4">
                 <div className="relative group">
                   <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 dark:text-white group-hover:text-gray-600">
-                    <a href={card.href}>
+                    <Link to={`/edit-card/${card.id}`}>
                       <span className="absolute inset-0" />
                       {card.title}
-                    </a>
+                    </Link>
                   </h3>
                   <p className="mt-5 text-sm leading-6 text-gray-600 dark:text-gray-100 line-clamp-3">
                     {card.description}
@@ -99,7 +110,7 @@ export default function Cards() {
                     </svg>
                   </button>
                   <button
-                    onClick={() => deleteCard(card.id)}
+                    onClick={() => deleteCardFunc(card.id)}
                     className="text-gray-500"
                   >
                     <svg
