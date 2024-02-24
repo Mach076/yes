@@ -4,8 +4,8 @@ const Footer = () => {
   const favouriteCards = useCardStore((state) => state.favouriteCards);
   return (
     <Fragment>
-      <div className="sticky bottom-0 flex items-center justify-center w-full h-16 bg-white">
-        <div className="flex items-center gap-20 mx-auto">
+      <div className="sticky bottom-0 flex items-center justify-center w-full h-16 dark:bg-black bg-white">
+        <div className="flex items-center text-black dark:text-white gap-20 mx-auto">
           <button>
             <svg
               xmlns="http://www.w3.org/2000/svg"

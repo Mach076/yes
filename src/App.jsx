@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateCard from "./pages/CreateCard";
 import EditCard from "./pages/EditCard";
+import About from "./pages/About";
 //components
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -24,6 +25,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<About />} />
         <Route path="/create-card" element={<CreateCard />} />
         <Route path="/edit-card/:id" element={<EditCard />} />
         <Route path="/favourite-cards" element={<FavouriteCards />} />
